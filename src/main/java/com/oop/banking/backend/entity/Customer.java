@@ -40,6 +40,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Account> accounts;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "bank_id", referencedColumnName = "id")
+    private Bank bank;
 
 }
 

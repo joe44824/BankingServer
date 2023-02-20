@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface CustomerService {
-    Customer createCustomer(Customer customer);
+    Customer createCustomer(int bankId, Customer customer);
 
     Customer getCustomer(int id);
 

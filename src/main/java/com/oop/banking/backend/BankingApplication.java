@@ -1,17 +1,27 @@
 package com.oop.banking.backend;
 
+import com.oop.banking.backend.entity.Bank;
 import com.oop.banking.backend.entity.Customer;
+import com.oop.banking.backend.repository.BankRepository;
 import com.oop.banking.backend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
 public class BankingApplication implements CommandLineRunner {
 
 	@Autowired
 	private CustomerRepository customerRepository;
+
+	@Autowired
+	private BankRepository bankRepository;
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(BankingApplication.class, args);
@@ -20,17 +30,19 @@ public class BankingApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Customer[] customers = new Customer[] {
-				new Customer(1, "John", "Lee", 222222),
-				new Customer(2, "Steve", "Ann", 222222),
-				new Customer(3, "Siri", "East", 222222),
-				new Customer(4, "Neville", "Tay", 222222),
-				new Customer(5, "Ron", "Weasley", 222222),
+
+		Bank[] banks = new Bank[]{
+				new Bank(1, "HENG", false),
+				new Bank(2, "DBS", true),
+				new Bank(3, "OCBC", true),
+				new Bank(4, "EXPRESS", false)
 		};
 
-		for (int i = 0; i < customers.length; i ++) {
-			customerRepository.save(customers[i]);
+		for (int i = 0; i < banks.length; i++) {
+			bankRepository.save(banks[i]);
 		}
+
+		jdbcTemplate.update("INSERT INTO customer (id, first_name, last_name, hashed_pin, bank_id) VALUES (1, 'JAMES', 'CHARLES', 111111, 1)");
 
 
 	}

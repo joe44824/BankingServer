@@ -15,9 +15,9 @@ public class CustomerController {
     @Autowired
     private CustomerService service;
 
-    @PostMapping("/customer")
-    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        return new ResponseEntity<>(service.createCustomer(customer), HttpStatus.CREATED);
+    @PostMapping("/customer/{bankId}")
+    public ResponseEntity<Customer> createCustomer(@PathVariable int bankId, @RequestBody Customer customer) {
+        return new ResponseEntity<>(service.createCustomer(bankId, customer), HttpStatus.CREATED);
     }
 
     @GetMapping("/customer/{id}")

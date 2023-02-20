@@ -1,6 +1,9 @@
 package com.oop.banking.backend.service;
 
+import com.oop.banking.backend.entity.Account;
+import com.oop.banking.backend.entity.Bank;
 import com.oop.banking.backend.entity.Customer;
+import com.oop.banking.backend.repository.BankRepository;
 import com.oop.banking.backend.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +16,20 @@ public class CustomerServiceImpl implements CustomerService{
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Customer createCustomer(Customer customer) {
+    @Autowired
+    private BankRepository bankRepository;
+
+//    @Override
+//    public Account createAccount(Account account, int customerId) {
+//        Customer customer = customerRepository.findById(customerId).get();
+//        account.setCustomer(customer);
+//        return accountRepository.save(account);
+//    }
+
+    public Customer createCustomer(int bankId,Customer customer) {
+        Bank bank = bankRepository.findById(bankId).get();
+        customer.setBank(bank);
+
         return customerRepository.save(customer);
     }
 
