@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @SpringBootApplication
@@ -42,8 +43,10 @@ public class BankingApplication implements CommandLineRunner {
 			bankRepository.save(banks[i]);
 		}
 
-		jdbcTemplate.update("INSERT INTO customer (id, first_name, last_name, hashed_pin, bank_id) VALUES (1, 'JAMES', 'CHARLES', 111111, 1)");
+		jdbcTemplate.update("INSERT INTO customer (id, first_name, last_name, hashed_pin, bank_id, username) VALUES (1, 'JAMES', 'CHARLES', 111111, 1, 'jamie111')");
 
 
 	}
+
+
 }

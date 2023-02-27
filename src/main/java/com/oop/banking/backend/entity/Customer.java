@@ -17,14 +17,18 @@ import java.util.List;
 public class Customer {
 
     @Id
-    @NonNull
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
-    private int id;
+    private String id;
 
 
     @NonNull
     @Column(name = "first_name" , nullable = false)
     private String firstName;
+
+    @NonNull
+    @Column(name = "username", nullable = false)
+    private String username;
 
 
     @NonNull

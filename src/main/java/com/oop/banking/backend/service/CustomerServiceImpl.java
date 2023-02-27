@@ -33,11 +33,11 @@ public class CustomerServiceImpl implements CustomerService{
         return customerRepository.save(customer);
     }
 
-    public Customer getCustomer(int id) {
+    public Customer getCustomer(String id) {
         return customerRepository.findById(id).get();
     }
 
-    public Customer updateCustomer(int id, Customer customer) {
+    public Customer updateCustomer(String id, Customer customer) {
         Customer existingCustomer = customerRepository.findById(id).orElse(null);
 
             existingCustomer.setFirstName(customer.getFirstName());
@@ -48,7 +48,7 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
 
-    public String deleteCustomer(int id) {
+    public String deleteCustomer(String id) {
         customerRepository.deleteById(id);
         return "Customer (" + id + ") removed";
     }

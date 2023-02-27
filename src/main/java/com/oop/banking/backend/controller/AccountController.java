@@ -17,12 +17,12 @@ public class AccountController {
     private AccountService service;
 
     @PostMapping("/account/{customerId}")
-    public ResponseEntity<Account> createAccount(@PathVariable int customerId, @RequestBody Account account){
+    public ResponseEntity<Account> createAccount(@PathVariable String customerId, @RequestBody Account account){
         return new ResponseEntity<>(service.createAccount(account, customerId), HttpStatus.OK);
     }
 
     @GetMapping("/account/{customerId}/all")
-    public ResponseEntity<List<Account>> getAccounts(@PathVariable int customerId) {
+    public ResponseEntity<List<Account>> getAccounts(@PathVariable String customerId) {
         return new ResponseEntity<>(service.getAccountsByCustomerId(customerId), HttpStatus.OK);
     }
 

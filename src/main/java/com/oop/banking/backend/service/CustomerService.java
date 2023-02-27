@@ -8,11 +8,11 @@ import java.util.List;
 public interface CustomerService {
     Customer createCustomer(int bankId, Customer customer);
 
-    Customer getCustomer(int id);
+    Customer getCustomer(String id);
 
-    Customer updateCustomer(int id, Customer customer);
+    Customer updateCustomer(String id, Customer customer);
 
-    String deleteCustomer(int id);
+    String deleteCustomer(String id);
 
     List<Customer> getCustomers();
 

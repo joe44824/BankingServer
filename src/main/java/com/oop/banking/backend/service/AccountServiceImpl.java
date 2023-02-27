@@ -19,7 +19,7 @@ public class AccountServiceImpl implements AccountService{
     private CustomerRepository customerRepository;
 
     @Override
-    public Account createAccount(Account account, int customerId) {
+    public Account createAccount(Account account, String customerId) {
         Customer customer = customerRepository.findById(customerId).get();
         account.setCustomer(customer);
         return accountRepository.save(account);
@@ -31,7 +31,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public List<Account> getAccountsByCustomerId(int customerId) {
+    public List<Account> getAccountsByCustomerId(String customerId) {
         return accountRepository.findByCustomerId(customerId);
     }
 
@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public String deleteAccount(int id) {
 
-        int customerId = accountRepository.findById(id).get().getCustomer().getId();
+        String customerId = accountRepository.findById(id).get().getCustomer().getId();
 
         Double existingBalance = accountRepository.findById(id).get().getBalance();
 

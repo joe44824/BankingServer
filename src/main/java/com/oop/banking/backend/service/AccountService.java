@@ -5,12 +5,12 @@ import com.oop.banking.backend.entity.Account;
 import java.util.List;
 
 public interface AccountService {
-    Account createAccount(Account account, int customerId);
+    Account createAccount(Account account, String customerId);
 
     Account getAccount(int id);
 
 
-    List<Account> getAccountsByCustomerId(int customerId);
+    List<Account> getAccountsByCustomerId(String customerId);
 
     String deleteAccount(int id);
 

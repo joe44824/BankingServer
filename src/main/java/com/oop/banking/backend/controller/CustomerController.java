@@ -21,18 +21,18 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{id}")
-    public ResponseEntity<Customer> getCustomer(@PathVariable int id) {
+    public ResponseEntity<Customer> getCustomer(@PathVariable String id) {
         return new ResponseEntity<>(service.getCustomer(id), HttpStatus.OK);
     }
 
 
     @PutMapping("/customer/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable int id, @RequestBody Customer customer) {
+    public ResponseEntity<Customer> updateCustomer(@PathVariable String id, @RequestBody Customer customer) {
         return new ResponseEntity<>(service.updateCustomer(id, customer), HttpStatus.OK);
     }
 
     @DeleteMapping("/customer/{id}")
-    public ResponseEntity<String> deleteCustomer(@PathVariable int id) {
+    public ResponseEntity<String> deleteCustomer(@PathVariable String id) {
         return new ResponseEntity<>(service.deleteCustomer(id), HttpStatus.OK);
     }
 
